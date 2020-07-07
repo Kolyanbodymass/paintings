@@ -962,6 +962,7 @@ var modals = function modals() {
         modal = document.querySelector(modalSelector),
         close = document.querySelector(closeSelector),
         windows = document.querySelectorAll('[data-modal]'),
+        fixedElement = document.querySelectorAll('[data-fixed]'),
         scroll = calcScroll();
     trigger.forEach(function (item) {
       item.addEventListener('click', function (e) {
@@ -979,6 +980,9 @@ var modals = function modals() {
           item.style.display = 'none';
           item.classList.add('animated', 'fadeIn');
         });
+        fixedElement.forEach(function (item) {
+          item.style.marginRight = "".concat(scroll, "px");
+        });
         modal.style.display = "block";
         document.body.style.overflow = "hidden";
         document.body.style.marginRight = "".concat(scroll, "px");
@@ -988,6 +992,9 @@ var modals = function modals() {
       windows.forEach(function (item) {
         item.style.display = 'none';
       });
+      fixedElement.forEach(function (item) {
+        item.style.marginRight = "0px";
+      });
       modal.style.display = "none";
       document.body.style.overflow = "";
       document.body.style.marginRight = "0px";
@@ -996,6 +1003,9 @@ var modals = function modals() {
       if (e.target === modal) {
         windows.forEach(function (item) {
           item.style.display = 'none';
+        });
+        fixedElement.forEach(function (item) {
+          item.style.marginRight = "0px";
         });
         modal.style.display = "none";
         document.body.style.overflow = "";

@@ -5,6 +5,7 @@ const modals = () => {
               modal = document.querySelector(modalSelector),
               close = document.querySelector(closeSelector),
               windows = document.querySelectorAll('[data-modal]'),
+              fixedElement = document.querySelectorAll('[data-fixed]'),
               scroll = calcScroll();
 
         trigger.forEach(item => {
@@ -23,6 +24,10 @@ const modals = () => {
                     item.style.display = 'none';
                     item.classList.add('animated', 'fadeIn');
                 });
+
+                fixedElement.forEach(item => {
+                    item.style.marginRight = `${scroll}px`;
+                });
     
                 modal.style.display = "block";
                 document.body.style.overflow = "hidden";
@@ -34,6 +39,10 @@ const modals = () => {
             windows.forEach(item => {
                 item.style.display = 'none';
             });
+
+            fixedElement.forEach(item => {
+                item.style.marginRight = `0px`;
+            });
             
             modal.style.display = "none"; 
             document.body.style.overflow = "";
@@ -44,6 +53,10 @@ const modals = () => {
             if (e.target === modal) {
                 windows.forEach(item => {
                     item.style.display = 'none';
+                });
+
+                fixedElement.forEach(item => {
+                    item.style.marginRight = `0px`;
                 });
 
                 modal.style.display = "none";
