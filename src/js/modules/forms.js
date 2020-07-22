@@ -1,6 +1,6 @@
 import {postData} from '../services/requests';
 
-const forms = (sum) => {
+const forms = (obj) => {
     const form = document.querySelectorAll('form'),
           inputs = document.querySelectorAll('input'),
           upload = document.querySelectorAll('[name="upload"]');
@@ -66,7 +66,9 @@ const forms = (sum) => {
 
             const formData = new FormData(item);
             if (item.getAttribute('data-calc') === "calc") {
-                formData.append("calcSum", sum);
+                // console.log(obj['calcSum']);
+                formData.append("total", obj['calcSum']);
+                // console.log(formData.get("total"));
             }
             let api;
             item.closest('.popup-design') || item.classList.contains('calc_form') ? api = path.designer : api = path.question;

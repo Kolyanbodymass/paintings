@@ -10,15 +10,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
     'use strict';
 
-    let sum = 0;
+    let calcSumObj = {};
 
     modals();
     sliders('.main-slider-item', 'vertical');
     sliders('.feedback-slider-item', 'horizontal', '.main-prev-btn', '.main-next-btn');
-    forms(sum);
     mask('[name="phone"]');
     checkTextInputs('[name="name"]');
     checkTextInputs('[name="message"]');
     showMoreStyles('.button-styles', '#styles .row');
-    calc('#size', '#material', '#options', '.promocode', '.calc-price', sum);
+    calc('#size', '#material', '#options', '.promocode', '.calc-price', calcSumObj);
+    forms(calcSumObj);
 });

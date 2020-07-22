@@ -1,9 +1,11 @@
-const calc = (size, material, options, promocode, result, sum) => {
+const calc = (size, material, options, promocode, result, obj) => {
     const sizeBlock = document.querySelector(size),
           materialBlock = document.querySelector(material),
           optionsBlock = document.querySelector(options),
           promocodeBlock = document.querySelector(promocode),
           resultBlock = document.querySelector(result);
+
+    let sum = 0;
 
     const calcFunc = () => {
         sum = Math.round((+sizeBlock.value) * (+materialBlock.value) + (+optionsBlock.value));
@@ -11,10 +13,13 @@ const calc = (size, material, options, promocode, result, sum) => {
         if (sizeBlock.value == "" || materialBlock.value == "") {
             resultBlock.textContent = "Пожалуйста, выберете размер и материал картины!";
         } else if (promocodeBlock.value === 'IWANTPOPART') {
-            resultBlock.textContent = Math.round(sum * 0.7);
+            sum = Math.round(sum * 0.7);
+            resultBlock.textContent = sum;
         } else {
             resultBlock.textContent = sum;
         }
+
+        obj['calcSum'] = sum;
     };
 
     sizeBlock.addEventListener('change', calcFunc);
@@ -22,7 +27,6 @@ const calc = (size, material, options, promocode, result, sum) => {
     optionsBlock.addEventListener('change', calcFunc);
     promocodeBlock.addEventListener('input', calcFunc);
 
-    return sum;
 };
 
 export default calc;
