@@ -1,19 +1,19 @@
 const filter = () => {
     const menu = document.querySelector('.portfolio-menu'),
           items = menu.querySelectorAll('li'),
-          btnAll = menu.querySelector('.all'),
-          btnLovers = menu.querySelector('.lovers'),
-          btnChef = menu.querySelector('.chef'),
-          btnGirl = menu.querySelector('.girl'),
-          btnGuy = menu.querySelector('.guy'),
-          btnGrandmother = menu.querySelector('.grandmother'),
-          btnGranddad = menu.querySelector('.granddad'),
+        //   btnAll = menu.querySelector('.all'),
+        //   btnLovers = menu.querySelector('.lovers'),
+        //   btnChef = menu.querySelector('.chef'),
+        //   btnGirl = menu.querySelector('.girl'),
+        //   btnGuy = menu.querySelector('.guy'),
+        //   btnGrandmother = menu.querySelector('.grandmother'),
+        //   btnGranddad = menu.querySelector('.granddad'),
           wrapper = document.querySelector('.portfolio-wrapper'),
           markAll = wrapper.querySelectorAll('.all'),
-          markGirl = wrapper.querySelectorAll('.girl'),
-          markLovers = wrapper.querySelectorAll('.lovers'),
-          markChef = wrapper.querySelectorAll('.chef'),
-          markGuy = wrapper.querySelectorAll('.guy'),
+        //   markGirl = wrapper.querySelectorAll('.girl'),
+        //   markLovers = wrapper.querySelectorAll('.lovers'),
+        //   markChef = wrapper.querySelectorAll('.chef'),
+        //   markGuy = wrapper.querySelectorAll('.guy'),
           no = document.querySelector('.portfolio-no');
 
     const typeFilter = (markType) => {
@@ -25,7 +25,7 @@ const filter = () => {
         no.style.display = "none";
         no.classList.remove('animated', 'fadeIn');
 
-        if (markType) {
+        if (markType.length >= 1) {
             markType.forEach(mark => {
                 mark.style.display = 'block';
                 mark.classList.add('animated', 'fadeIn');
@@ -36,33 +36,47 @@ const filter = () => {
         }
     };
 
-    btnAll.addEventListener('click', () => {
-        typeFilter(markAll);
-    });
 
-    btnLovers.addEventListener('click', () => {
-        typeFilter(markLovers);
-    });
 
-    btnChef.addEventListener('click', () => {
-        typeFilter(markChef);
-    });
+    // btnAll.addEventListener('click', () => {
+    //     typeFilter(markAll);
+    // });
 
-    btnGuy.addEventListener('click', () => {
-        typeFilter(markGuy);
-    });
+    // btnLovers.addEventListener('click', () => {
+    //     typeFilter(markLovers);
+    // });
 
-    btnGirl.addEventListener('click', () => {
-        typeFilter(markGirl);
-    });
+    // btnChef.addEventListener('click', () => {
+    //     typeFilter(markChef);
+    // });
 
-    btnGrandmother.addEventListener('click', () => {
-        typeFilter();
-    });
+    // btnGuy.addEventListener('click', () => {
+    //     typeFilter(markGuy);
+    // });
 
-    btnGranddad.addEventListener('click', () => {
-        typeFilter();
-    });
+    // btnGirl.addEventListener('click', () => {
+    //     typeFilter(markGirl);
+    // });
+
+    // btnGrandmother.addEventListener('click', () => {
+    //     typeFilter();
+    // });
+
+    // btnGranddad.addEventListener('click', () => {
+    //     typeFilter();
+    // });
+
+    function eventHandler () {
+        items.forEach(elem => {
+            let i = elem.classList[0];
+            menu.querySelector(`.${i}`).addEventListener('click', () => {
+                typeFilter(wrapper.querySelectorAll(`.${i}`));
+                console.log(wrapper.querySelectorAll(`.${i}`));
+            });
+        });
+    }
+
+    eventHandler();
 
     menu.addEventListener('click', (e) => {
         let target = e.target;
