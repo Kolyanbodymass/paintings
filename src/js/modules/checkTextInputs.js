@@ -8,6 +8,13 @@ const checkTextInputs = (selector) => {
                 e.preventDefault();
             }
         });
+        input.addEventListener('change', function() {
+            console.log('отловил');
+            if (this.value.match(/[^а-яё 0-9]/ig)) {
+                this.value = '';
+                this.focus();
+            }
+        });
     });
 };
 

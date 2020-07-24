@@ -3,8 +3,9 @@ const mask = (selector) => {
     let setCursorPosition = (pos, elem) => {
         elem.focus();
 
-        if (elem.setSelectionRenge) {
-            elem.setSelectionRenge(pos, pos);
+        if (elem.setSelectionRange) {
+            elem.setSelectionRange(pos, pos);
+            
         } else if (elem.createTextRange) {
             let range = elem.createTextRange();
 
@@ -44,6 +45,7 @@ const mask = (selector) => {
         input.addEventListener('input', createMask);
         input.addEventListener('focus', createMask);
         input.addEventListener('blur', createMask);
+        input.addEventListener('click', createMask);
     });
 
 };

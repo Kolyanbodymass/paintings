@@ -66,14 +66,16 @@ const filter = () => {
     //     typeFilter();
     // });
 
-    (() => {
+    const addEventHandler = () => {
         items.forEach(elem => {
             let i = elem.classList[0];
             menu.querySelector(`.${i}`).addEventListener('click', () => {
                 typeFilter(wrapper.querySelectorAll(`.${i}`));
             });
         });
-    }());
+    };
+
+    addEventHandler();
 
     menu.addEventListener('click', (e) => {
         let target = e.target;
