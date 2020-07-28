@@ -17,10 +17,10 @@ const showMoreStyles = (trigger, wrapper) => {
     // });
 
     btn.addEventListener('click', function() {
-        getResource('http://localhost:3000/styles')
-            .then(res => createCards(res))
+        getResource('https://paintings.vasilievnikolay.ru/assets/db.json')
+            .then(res => createCards(res.styles))
             .catch(error => console.log(error));
-        
+
         this.remove();
     });
 
@@ -29,7 +29,7 @@ const showMoreStyles = (trigger, wrapper) => {
             let card = document.createElement('div');
 
             card.classList.add('animated', 'fadeInUp', 'col-sm-3', 'col-sm-offset-0', 'col-xs-10', 'col-xs-offset-1');
-            
+        
             card.innerHTML = `
                 <div class="styles-block">
                     <img src=${src} alt="style">
@@ -40,9 +40,7 @@ const showMoreStyles = (trigger, wrapper) => {
 
             document.querySelector(wrapper).appendChild(card);
         });
-    }
-
-
+    };
 };
 
 export default showMoreStyles;
